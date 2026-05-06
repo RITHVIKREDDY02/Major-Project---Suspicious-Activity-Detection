@@ -46,9 +46,13 @@ export default function Register() {
           setLocation("/dashboard");
         },
         onError: (error) => {
+          const msg =
+            (error.data as { error?: string } | null)?.error ||
+            error.message ||
+            "An error occurred during registration.";
           toast({
             title: "Registration Failed",
-            description: error.error || "An error occurred during registration.",
+            description: msg,
             variant: "destructive",
           });
         },

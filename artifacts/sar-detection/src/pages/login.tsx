@@ -44,9 +44,13 @@ export default function Login() {
           setLocation("/dashboard");
         },
         onError: (error) => {
+          const msg =
+            (error.data as { error?: string } | null)?.error ||
+            error.message ||
+            "Invalid credentials provided.";
           toast({
             title: "Authentication Failed",
-            description: error.error || "Invalid credentials provided.",
+            description: msg,
             variant: "destructive",
           });
         },
