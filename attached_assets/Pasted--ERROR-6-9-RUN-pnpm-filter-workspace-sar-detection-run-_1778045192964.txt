@@ -1,0 +1,66 @@
+ => ERROR [6/9] RUN pnpm --filter @workspace/sar-detection run build                                               2.5s
+------
+ > [6/9] RUN pnpm --filter @workspace/sar-detection run build:
+2.112
+2.112 > @workspace/sar-detection@0.0.0 build /app/artifacts/sar-detection
+2.112 > vite build --config vite.config.ts
+2.112
+2.346 /app/node_modules/.pnpm/rollup@4.59.0/node_modules/rollup/dist/native.js:115
+2.346           throw new Error(
+2.346                 ^
+2.346
+2.346 Error: Cannot find module @rollup/rollup-linux-x64-musl. npm has a bug related to optional dependencies (https://github.com/npm/cli/issues/4828). Please try `npm i` again after removing both package-lock.json and node_modules directory.
+2.346     at requireWithFriendlyError (/app/node_modules/.pnpm/rollup@4.59.0/node_modules/rollup/dist/native.js:115:9)
+2.346     at Object.<anonymous> (/app/node_modules/.pnpm/rollup@4.59.0/node_modules/rollup/dist/native.js:124:76)
+2.346     ... 3 lines matching cause stack trace ...
+2.346     at Module._load (node:internal/modules/cjs/loader:1091:12)
+2.346     at cjsLoader (node:internal/modules/esm/translators:298:15)
+2.346     at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7)
+2.346     at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+2.346     at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) {
+2.346   [cause]: Error: Cannot find module '@rollup/rollup-linux-x64-musl'
+2.346   Require stack:
+2.346   - /app/node_modules/.pnpm/rollup@4.59.0/node_modules/rollup/dist/native.js
+2.346       at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+2.346       at Module._load (node:internal/modules/cjs/loader:1038:27)
+2.346       at Module.require (node:internal/modules/cjs/loader:1289:19)
+2.346       at require (node:internal/modules/helpers:182:18)
+2.346       at requireWithFriendlyError (/app/node_modules/.pnpm/rollup@4.59.0/node_modules/rollup/dist/native.js:97:10)
+2.346       at Object.<anonymous> (/app/node_modules/.pnpm/rollup@4.59.0/node_modules/rollup/dist/native.js:124:76)
+2.346       at Module._compile (node:internal/modules/cjs/loader:1521:14)
+2.346       at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+2.346       at Module.load (node:internal/modules/cjs/loader:1266:32)
+2.346       at Module._load (node:internal/modules/cjs/loader:1091:12) {
+2.346     code: 'MODULE_NOT_FOUND',
+2.346     requireStack: [
+2.346       '/app/node_modules/.pnpm/rollup@4.59.0/node_modules/rollup/dist/native.js'
+2.346     ]
+2.346   }
+2.346 }
+2.346
+2.346 Node.js v20.20.2
+2.396 /app/artifacts/sar-detection:
+2.396  ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/sar-detection@0.0.0 build: `vite build --config vite.config.ts`
+[+] up 14/15tatus 1
+ ✔ Image postgres:16-alpine                                Pulled                                                   8.4s
+ ⠙ Image major-project---suspicious-activity-detection-app Building                                                30.7s
+Dockerfile:15
+
+--------------------
+
+  13 |     ENV NODE_ENV=production
+
+  14 |
+
+  15 | >>> RUN pnpm --filter @workspace/sar-detection run build
+
+  16 |     RUN pnpm --filter @workspace/api-server run build
+
+  17 |
+
+--------------------
+
+failed to solve: process "/bin/sh -c pnpm --filter @workspace/sar-detection run build" did not complete successfully: exit code: 1
+
+WARN[0000] /home/ubuntu/Major-Project---Suspicious-Activity-Detection/docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion
+ubuntu@ip-172-31-47-225:~/Major-Project---Suspicious-Activity-Detection$
